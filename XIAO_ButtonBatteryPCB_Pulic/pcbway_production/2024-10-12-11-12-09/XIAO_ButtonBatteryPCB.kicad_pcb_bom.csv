@@ -1,0 +1,11 @@
+﻿Designator,Quantity,Value,Footprint,Package,MPN,DNP,Mount_Type,Description,Sim.Device,Sim.Pins,MF,MAXIMUM_PACKAGE_HEIGHT,Price,Check_prices,STANDARD,PARTREV,SnapEDA_Link,MP,Purchase-URL,Description_1,Availability,MANUFACTURER
+C1,1,C,LIR2450_EEMB,,,,tht,Unpolarized capacitor,,,,,,,,,,,,,,
+C2,1,C,2032_BS-2032-8-3,,,,smt,Unpolarized capacitor,,,,,,,,,,,,,,
+C3,1,C,2032_BS-2032-8C,,,,smt,Unpolarized capacitor,,,,,,,,,,,,,,
+C4,1,C,2450_MYOUNG BS-24-B4AK014,,,,smt,Unpolarized capacitor,,,,,,,,,,,,,,
+D1,1,RB160M-30,DIO_RB160M-30,,,,smt,Diode,D,1=K 2=A,,,,,,,,,,,,
+"J1, J2",2,110990030__Grove,SEEED_110990030,None,,,tht,,,,Seeed Technology,8.1mm,None,https://www.snapeda.com/parts/110990030/Seeed+Technology+Co.%252C+Ltd/view-part/?ref=eda,Manufacturer Recommendations,A,https://www.snapeda.com/parts/110990030/Seeed+Technology+Co.%252C+Ltd/view-part/?ref=snap,110990030,https://www.snapeda.com/api/url_track_click_mouser/?unipart_id=583576&manufacturer=Seeed Technology&part_name=110990030&search_term=None,"
+GROVE 2MM 4PIN VERT CONN 10PCS
+",In Stock,Seeed Technology
+SW1,1,SW_Wuerth_450301014042,SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm,,,,tht,"Switch slide, single pole double throw",,,,,,,,,,,,,,
+U1,1,XIAO-ESP32C3_C6,XIAO_Seeed_ESP32C3_C6_BatteryHolder_v2,,,,smt,,,,,,,,,,,,,,,

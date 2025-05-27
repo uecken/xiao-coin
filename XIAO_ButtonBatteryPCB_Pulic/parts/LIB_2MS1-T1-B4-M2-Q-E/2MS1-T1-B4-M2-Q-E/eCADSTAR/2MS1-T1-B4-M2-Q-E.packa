@@ -1,0 +1,13 @@
+(unit MM)
+
+(package "2MS1-T1-B4-M2-Q-E"
+    (type UNDEF)
+    (uver 2)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (utime 2018-06-06-11:10:45)
+    (mountForm default
+        (footprintRef "2MS1-T1-B4-M2-Q-E")
+        (spec "System")
+    )
+)

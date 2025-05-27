@@ -1,0 +1,10 @@
+﻿pos_x,pos_y,rotation,side,designator,mpn,pack,footprint,value,mount_type,place
+27.11,-12.05,0.0,top,C1,,,LIR2450_EEMB,C,tht,True
+10.85,-11.314999,0.0,top,C2,,,2032_BS-2032-8-3,C,smt,True
+162.6,-92.9,180.0,bottom,C3,,,2032_BS-2032-8C,C,smt,True
+162.6,-99.9,180.0,bottom,C4,,,2450_MYOUNG BS-24-B4AK014,C,smt,True
+168.1375,-100.1,0.0,bottom,D1,,,DIO_RB160M-30,RB160M-30,smt,True
+168.5,-93.1,0.0,top,J1,,None,SEEED_110990030,110990030__Grove,tht,True
+156.7,-93.2,180.0,bottom,J2,,None,SEEED_110990030,110990030__Grove,tht,True
+157.16,-100.0,0.0,top,SW1,,,SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm,SW_Wuerth_450301014042,tht,True
+162.564,-80.22,0.0,top,U1,,,XIAO_Seeed_ESP32C3_C6_BatteryHolder_v2,XIAO-ESP32C3_C6,smt,True

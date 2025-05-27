@@ -1,0 +1,13 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"90-06032024-931577";"";
+"REFERENCE";"401692";"";
+"rs_stock_number";"401692";"";
+"TraceParts.PartTitle";"2P on-off-on PCB pin toggle switch,2A";"";
+"url";"https://uk.rs-online.com/web/p/toggle-switches/0401692//?cm_mmc=aff-_-uk-_-traceparts-_-401692";"";
+"SUPPLIER_NAME";"RS Components";"";
+"SUPPLIER";"RS PRO";"";
+"DESIGN";"2P on-off-on PCB pin toggle switch,2A";"";
+"TraceParts.InstanceId";"90-06032024-9315772N3XX9WWY2MK673V115V3T3RA";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.PartVersion";"1.0.0";"";

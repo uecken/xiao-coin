@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'SCH16T_K01_1'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "Murata Electronics", "SCH16T-K01-1" (!) = "", "SCH16TK011", "Other", "81-SCH16T-K01-1", "https://www.mouser.co.uk/ProductDetail/Murata-Electronics/SCH16T-K01-1?qs=HFfMDpzxxd0hctvcENbFhg%3D%3D", "Gyroscopes 6-DOF XYZ-Axis gyroscope 300deg/s and XYZ-Axis accelerometer 8g (26g)", "https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet-sch16t-series-short.ashx?la=en-us&cvid=20240110024121000000", "3 mm"
+END_PART
+
+END.

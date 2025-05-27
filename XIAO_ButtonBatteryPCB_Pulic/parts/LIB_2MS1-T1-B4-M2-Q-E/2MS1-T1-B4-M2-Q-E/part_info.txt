@@ -1,0 +1,9 @@
+Manufacturer=Cosland
+PartNumber=2MS1-T1-B4-M2-Q-E
+PartCategory=Switch
+PackageCategory=Other
+PinCount=3
+Version=1.1
+Released=2017-11-10 15:45:35
+Downloaded=2024-12-26 11:25:44
+3D=N

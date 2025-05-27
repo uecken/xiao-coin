@@ -1,0 +1,16 @@
+.SCH16T-K01-1 :1 ;Gyroscopes 6-DOF XYZ-Axis gyroscope 300deg/s and XYZ-Axis accelerometer 8g (26g)
+SCH16TK011
+*STM U
+*NGS
+*PLB 1="HEATSINK_1" 2="N.C." 3="TA9" 4="TA8" 5="RESERVED_1" 6="EXTRESN" 7="RESERVED_2" 8="V3P3_1" 9="GND_1" 10="VREGA2" 11="VREGA" 12="GND_2" 13="GND_3" 14="VREGD2" 15="VREGD" 16="GND_4" 17="V3P3_2" 18="VDDIO" 19="MISO" 20="DRY_SYNC" 21="SCK" 22="CS" 23="MOSI" 24="HEATSINK_2"
+*MXP 24
+*DFN SCH16T-K01-1
+~!Mouser Part Number (81-SCH16T-K01-1)
+~!Link Mouser Price/Stock (https://www.mouser.co.uk/ProductDetail/Murata-Electronics/SCH16T-K01-1?qs=HFfMDpzxxd0hctvcENbFhg%3D%3D)
+~!Manufacturer_Name (Murata Electronics)
+~!Manufacturer_Part_Number (SCH16T-K01-1)
+~!Link Datasheet (https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet-sch16t-series-short.ashx?la=en-us&cvid=20240110024121000000)
+~!Height (3mm)
+~!3D_Model (SCH16T-K01-1)
+SCH16T-K01-1
+1.1!U 2.1!U 3.1!U 4.1!U 5.1!U 6.1!U 7.1!U 8.1!U 9.1!U 10.1!U 11.1!U 12.1!U 13.1!U 14.1!U 15.1!U 16.1!U 17.1!U 18.1!U 19.1!U 20.1!U 21.1!U 22.1!U 23.1!U 24.1!U 

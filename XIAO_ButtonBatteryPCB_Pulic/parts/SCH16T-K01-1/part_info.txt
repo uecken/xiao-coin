@@ -1,0 +1,9 @@
+Manufacturer=Murata Electronics
+PartNumber=SCH16T-K01-1
+PartCategory=Undefined or Miscellaneous
+PackageCategory=Other
+PinCount=24
+Version=2.1
+Released=2024-05-06 06:14:02
+Downloaded=2024-12-26 13:47:13
+3D=Y

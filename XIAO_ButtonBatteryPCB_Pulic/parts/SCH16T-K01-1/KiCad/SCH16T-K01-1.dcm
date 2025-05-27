@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SCH16T-K01-1
+D Gyroscopes 6-DOF XYZ-Axis gyroscope 300deg/s and XYZ-Axis accelerometer 8g (26g)
+K
+F https://www.murata.com/-/media/webrenewal/products/sensor/pdf/datasheet/datasheet-sch16t-series-short.ashx?la=en-us&cvid=20240110024121000000
+$ENDCMP
+#
+#End Doc Library

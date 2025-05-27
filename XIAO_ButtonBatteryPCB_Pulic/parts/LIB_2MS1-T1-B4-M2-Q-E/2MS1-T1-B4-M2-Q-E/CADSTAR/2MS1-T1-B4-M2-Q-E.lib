@@ -1,0 +1,17 @@
+.2MS1-T1-B4-M2-Q-E :1 ;Sub-miniature toggle switch
+"2MS1-T1-B4-M2-Q-E"
+*STM S
+*NGS
+*PLB 1="1" 2="2" 3="3"
+*MXP 3
+*DFN 2MS1-T1-B4-M2-Q-E
+~!Manufacturer_Name (Cosland)
+~!Manufacturer_Part_Number (2MS1-T1-B4-M2-Q-E)
+~!Mouser Part Number (-)
+~!Mouser Price/Stock (-)
+~!Arrow Part Number (-)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (http://akizukidenshi.com/download/2MS1-T1-B4-M2-Q-E-S.pdf)
+~!Height (-)
+"2MS1-T1-B4-M2-Q-E"
+1.1!U 2.1!U 3.1!U 

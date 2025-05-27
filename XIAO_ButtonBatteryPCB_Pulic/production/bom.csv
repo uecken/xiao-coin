@@ -1,0 +1,7 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+C1,C_Radial_D6.3mm_H7.0mm_P2.50mm,1,C,
+C4,2450_MYOUNG BS-24-B4AK014,1,C,
+"J1, J2",SEEED_110990030,2,110990030__Grove,
+"R1, R2",0603,2,4.7k,
+SW1,SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm,1,MK-12D13G4-B,
+U1,XIAO_Seeed_ESP32C3_C6_BatteryHolder_v2.1,1,XIAO-ESP32C3_C6,

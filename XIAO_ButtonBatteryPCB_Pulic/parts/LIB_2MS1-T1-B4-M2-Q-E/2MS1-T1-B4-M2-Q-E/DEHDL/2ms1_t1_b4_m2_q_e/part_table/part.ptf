@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART '2MS1_T1_B4_M2_Q_E'
+CLASS = DISCRETE
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET";
+{========================================================================================}
+ "Cosland", "2MS1-T1-B4-M2-Q-E" (!) = "", "2MS1-T1-B4-M2-Q-E", "Other", "", "", "", "", "Sub-miniature toggle switch", "http://akizukidenshi.com/download/2MS1-T1-B4-M2-Q-E-S.pdf"
+END_PART
+
+END.
