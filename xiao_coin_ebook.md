@@ -13,7 +13,8 @@
 6. [センサー接続とプログラミング](#センサー接続とプログラミング)
 7. [応用例とプロジェクト](#応用例とプロジェクト)
 8. [トラブルシューティング](#トラブルシューティング)
-9. [参考資料](#参考資料)
+9. [接続図とPCB](#接続図とPCB)
+10. [参考資料](#参考資料)
 
 ---
 
@@ -61,14 +62,6 @@ XIAO-Coin基板は、Seeed Studio製XIAOマイコンとリチウムイオンコ�
 2. Grove端子の電源をSolder Jumperで3.3V/5V選択可能に
 3. Grove端子を表面にも追加可能に
 
-![基板の更新内容](img/xiao-coin_v0.4_difference.png)
-
-### 回路図とPCB設計
-
-![回路図](img/XIAO_接続図.png)
-
-![PCB設計](img/XIAO_PCB.png)
-
 ---
 
 ## 部品調達とコスト
@@ -79,7 +72,7 @@ XIAO-Coin基板は、Seeed Studio製XIAOマイコンとリチウムイオンコ�
 |------|------|--------|------|-----|
 | XIAO ESP32 C3/C6/S3 | 630円〜 | Seeed | 下記参照 | - |
 | ボタン電池基板取付用ホルダー CH29-2032LF | 50円 | 秋月電子 | - | https://akizukidenshi.com/catalog/g/g108965/ |
-| スライドスイッチ MK-12D13G4-B | 40$/500個 | LCSC | - | https://www.lcsc.com/product-detail/Slide-Switches_HOOYA-MK-12D13G4-B_C20611678.html |
+| スライドスイッチ MK-12D13G4-B | 10円 | LCSC | - | https://www.lcsc.com/product-detail/Slide-Switches_HOOYA-MK-12D13G4-B_C20611678.html |
 | Groveコネクター L型 スルーホール | 15円 | 秋月電子 | 1個 | https://akizukidenshi.com/catalog/g/g112634/ |
 
 ### XIAO各種モデルの単価（Seeed社から10個購入時）
@@ -162,6 +155,8 @@ XIAO-Coin基板は、Seeed Studio製XIAOマイコンとリチウムイオンコ�
 
 ![バッテリーホルダーの電圧確認](img/バッテリーホルダ_電圧確認.png)
 
+電池を入れる際、+/-がショートしないように気を付けてください。
+ショートしにくいバッテリーホルダ―を選定していますが、注意してください。
 ![電池の装着](img/電池の装着.png)
 
 ### 完成品
@@ -181,34 +176,43 @@ XIAO-Coin基板は、Seeed Studio製XIAOマイコンとリチウムイオンコ�
 1. [Thonny公式サイト](https://thonny.org/)からダウンロード
 2. インストーラーを実行してセットアップ
 
-![Thonnyダウンロードページ](images/thonny_download.png)
-
 #### 2. MicroPythonファームウェアの書き込み
-1. Thonnyメニュー「Tools」→「Options」
-2. 「MicroPython(ESP32)」を選択
-3. 「Install or update MicroPython(esptool)」を選択
-4. XIAO ESP32のBootボタンを押しながらUSB接続
-5. 適切なCOMポートを選択
-6. ESP32用ファームウェアを選択してInstall
+
+下記6ステップを順に行ってください。
+
+  - Thonnyメニュー「Tools」→「Options」
+  - 「MicroPython(ESP32)」を選択
+  - 「Install or update MicroPython(esptool)」を選択
+  - XIAO ESP32のBootボタンを押しながらUSB接続 (ブートモードにする必要があります。)
 
 ![Thonny設定画面](img_micropython/Thonny_Options.png)
+
+  - 適切なCOMポートを選択
+  - ESP32用ファームウェアを選択してInstall
 
 ![ファームウェア書き込み](img_micropython/Thonny_Install_micropython.png)
 
 #### 3. ESP32への接続
-1. XIAO ESP32のリセットボタンを押すかUSB再接続
-2. Thonny右下の接続先を適切なCOMポートに変更
-3. 「MicroPython(ESP32)」と表示されれば接続成功
+- XIAO ESP32のリセットボタンを押すかUSB再接続した後,
+Thonny右下の接続先を適切なCOMポートに変更します
+- 「MicroPython(ESP32)」と表示されれば接続成功です
 
 ![COMポート選択](img_micropython/Thonny_Select_COMPort.png)
 
-#### 4. ファイル管理の設定
-1. 「View」→「Files」でファイルツリーを表示
-2. プロジェクトファイルをESP32にアップロード
+#### 4. ファイルのアップロード
+ - 「View」→「Files」でファイルツリーを表示
 
 ![ファイルビュー](img_micropython/Thonny_View_Files.png)
 
+ - micropythonプロジェクトファイルをESP32にアップロード
+   - Githubのリポジトリからmicropythonフォルダをダウンロードし、Cドライブ直下に格納してからアップロードしてください
+https://github.com/uecken/xiao-coin
+
 ![ファイルアップロード](img_micropython/Thonny_File_Upload.png)
+
+#### ５．テストプログラムの実行
+
+- 再生ボタンを押し、Helloと表示されれば動作しています。
 
 ![Hello.pyの実行](img_micropython/Thonny_hello.png)
 
@@ -219,100 +223,196 @@ XIAO-Coin基板は、Seeed Studio製XIAOマイコンとリチウムイオンコ�
 ### BNO085 IMUセンサーの使用
 
 #### センサーの調達
-**推奨**: AliExpressから購入（コストパフォーマンス良好）
+
+
+ - BNO085は AliExpressから購入すると安いです。
+ - 但しGroveコネクタを使う場合、3.3V⇔GND、SDA⇔SDLピンをそれぞれ入れ替える必要があるので注意してください。
+
 - URL: https://ja.aliexpress.com/item/1005005902501032.html
-- **注意**: Groveコネクタ使用時は配線の変更が必要
 
 ![BNO085センサー](img_micropython/BNO085.png)
 
 #### 配線方法
 ⚠️ **重要な配線注意点**
-- 3.3V ⇔ GND ピンを入れ替え
-- SDA ⇔ SCL ピンを入れ替え
-- I2C通信が不安定な場合は4.7kΩプルアップ抵抗を追加
+ - 参考までに、Aliexpressのモジュールのピン配置、正規のGroveコネクタのピン配置を参考として示します。正規のGroveコネクタのピン配置に合わせるために、3.3V⇔GND、SDA⇔SDLピンをそれぞれ入れ替える必要があります
+
+ - 一般的にI2CはSDAとSCLにプルアップ抵抗が必要です。通信が安定しない場合、3.3VとSDA、3.3VとSCLを繋ぐように4.7kΩの抵抗を接続して下さい。
 
 ![XIAO-BNO085配線図](img_micropython/XIAO-BNO085_配線.png)
 
 ![Groveピン配置とAliexpressモジュールピン配置](img_micropython/Groveピン配_Aliexモジュールピン配.png)
 
-#### I2Cピン設定（ESP32モデル別）
-```python
-# XIAOモデル別I2Cピン設定
-# ESP32 S3の場合
-I2C1_SDA = Pin(5)
-I2C1_SCL = Pin(6)
-
-# ESP32 C6の場合
-I2C1_SDA = Pin(22)
-I2C1_SCL = Pin(23)
-
-# ESP32 C3の場合
-I2C1_SDA = Pin(6)
-I2C1_SCL = Pin(7)
-```
 
 #### サンプルプログラム
+
+サンプルプログラムは下記に格納しています。
+https://github.com/uecken/xiao-coin/blob/main/micropython/test_bno08x_simple.py
+
 ```python
-from machine import Pin, I2C
-import time
+# BNO08x Micropython I2C Test program - Simplified version
+# Basic sensor data display only
+
+from machine import I2C, Pin
+from utime import sleep_ms
+from bno08x import *
+
+# I2Cピン設定（ESP32モデル別）
+I2C1_SDA = Pin(5)  # XIAO-ESP32 S3:5, C6:22, C3:6
+I2C1_SCL = Pin(6)  # XIAO-ESP32 S3:6, C6:23, C3:7
 
 # I2C初期化
-i2c = I2C(1, sda=Pin(5), scl=Pin(6), freq=400000)
+i2c1 = I2C(0, scl=I2C1_SCL, sda=I2C1_SDA, freq=400000, timeout=200000)
 
-# BNO085の基本的な読み取り例
-def read_bno085():
-    # センサーからデータを読み取り
-    # Euler Angleの取得など
-    pass
+# BNO085センサー初期化
+bno = BNO08X(i2c1, debug=False)
+print("BNO08x I2C connection : Done\n")
+
+# センサー機能を有効化
+bno.enable_feature(BNO_REPORT_ACCELEROMETER, 50)        # 加速度センサー 50ms間隔
+bno.enable_feature(BNO_REPORT_GYROSCOPE, 50)            # ジャイロスコープ 50ms間隔
+bno.enable_feature(BNO_REPORT_GAME_ROTATION_VECTOR, 50) # ゲーム回転ベクトル 50ms間隔
+bno.enable_feature(BNO_REPORT_GRAVITY, 50)              # 重力ベクトル 50ms間隔
+
+# オイラー角とクォータニオンの設定
+bno.set_quaternion_euler_vector(BNO_REPORT_GAME_ROTATION_VECTOR)
+
+print("BNO08x sensors enabling : Done\n")
+print("Starting sensor data display in 3 seconds...")
+sleep_ms(3000)
+
+# 初期キャリブレーション
+bno.calibration()
+print("Initial sensor calibration complete")
+sleep_ms(1000)
+
+# 姿勢の零点調整
+bno.tare()
+print("Tare operation complete - current orientation set as reference")
+sleep_ms(1000)
+
+print("\n===== Starting sensor data display =====\n")
 
 # メインループ
+count = 0
 while True:
-    read_bno085()
-    time.sleep(0.1)
+    count += 1
+    
+    print(f"===== Sensor Data Update #{count} =====")
+    
+    # 加速度データ（重力込み）
+    accel_x, accel_y, accel_z = bno.acc
+    print(f"Acceleration\tX: {accel_x:+.3f}\tY: {accel_y:+.3f}\tZ: {accel_z:+.3f}\tm/s²")
+    
+    # 重力ベクトル
+    grav_x, grav_y, grav_z = bno.gravity
+    print(f"Gravity\t\tX: {grav_x:+.3f}\tY: {grav_y:+.3f}\tZ: {grav_z:+.3f}\tm/s²")
+    
+    # 線形加速度（重力補正済み）
+    linear_x = accel_x - grav_x
+    linear_y = accel_y - grav_y
+    linear_z = accel_z - grav_z
+    print(f"Linear Accel\tX: {linear_x:+.3f}\tY: {linear_y:+.3f}\tZ: {linear_z:+.3f}\tm/s²")
+    
+    # ジャイロスコープ（角速度）
+    gyro_x, gyro_y, gyro_z = bno.gyro
+    print(f"Gyroscope\tX: {gyro_x:+.3f}\tY: {gyro_y:+.3f}\tZ: {gyro_z:+.3f}\trad/s")
+    
+    # オイラー角（Roll, Pitch, Yaw）
+    roll, pitch, yaw = bno.euler
+    print(f"Euler Angle\tRoll: {roll:+.3f}\tPitch: {pitch:+.3f}\tYaw: {yaw:+.3f}\trad")
+    
+    # クォータニオン
+    quat_w, quat_x, quat_y, quat_z = bno.quaternion
+    print(f"Quaternion\tW: {quat_w:+.3f}\tX: {quat_x:+.3f}\tY: {quat_y:+.3f}\tZ: {quat_z:+.3f}")
+    
+    print()  # 空行
+    
+    # 1秒間隔で表示
+    sleep_ms(1000) 
+
 ```
 
-![BNO085プログラム実行](img_micropython/Thonny_BNO085_プログラム実行.png)
+![BNO085プログラム実行](img_micropython/Thonny_BNO085_プログラム実行2.png)
 
----
+### 出力データの解説
 
-## 応用例とプロジェクト
+```
+===== Sensor Data Update #42 =====
+Acceleration	X: -3.016	Y: -8.043	Z: -4.281	m/s²
+Gravity		X: -3.023	Y: -8.047	Z: -4.281	m/s²
+Linear Accel	X: +0.008	Y: +0.004	Z: +0.000	m/s²
+Gyroscope	X: +0.008	Y: -0.008	Z: +0.008	rad/s
+Euler Angle	Roll: -118.298	Pitch: +18.422	Yaw: -33.818	rad
+Quaternion	W: -0.787	X: +0.325	Y: -0.016	Z: +0.524
+```
 
-### 活用分野
-- **モーションセンシング**: 姿勢検出、動作認識
-- **環境モニタリング**: 温湿度、気圧測定
-- **位置追跡**: GPS連携による位置情報取得
-- **IoTセンサーノード**: 無線通信によるデータ収集
 
-### プロジェクト例
-1. **デジタル水平器**: BNO085のEuler Angleを活用
-2. **活動量計**: 加速度センサーによる歩数計測
-3. **環境データロガー**: 各種センサーデータの記録・送信
-4. **スマートホームセンサー**: WiFi経由でのデータ送信
+参考までに、重力加速度を除いたLinear Accel（線形加速度）が取れるので正しく使えばある程度の相対位置測位に利用できます。
 
----
+- **意味**: 重力を除いた純粋な加速度（Acceleration - Gravity）
+- **単位**: m/s²
+- **値の解釈**:
+  - X: +0.008 m/s² → ほぼゼロ（静止状態）
+  - Y: +0.004 m/s² → ほぼゼロ（静止状態）
+  - Z: +0.000 m/s² → 完全にゼロ（静止状態）
+- **用途**: 物体の実際の動きの検出、歩数計、振動検知
+
+
+#### 実用的な活用例
+
+**1. 水平器**
+```python
+# Euler AngleのX, Y成分で水平からの傾きを検出
+tilt_x = roll * 180 / 3.14159  # ラジアンを度に変換
+tilt_y = pitch * 180 / 3.14159
+```
+
+**2. 動作検出**
+```python
+# Linear Accelの大きさで動きを検出
+motion_magnitude = (linear_x**2 + linear_y**2 + linear_z**2)**0.5
+if motion_magnitude > 0.5:  # 閾値
+    print("Motion detected!")
+```
+
+
+
+
 
 ## トラブルシューティング
+
 
 ### よくある問題と解決方法
 
 #### 電源関連
-- **充電されない**: 電池の極性、充電端子の半田付けを確認
-- **電圧が出ない**: ショートの有無、スイッチの位置を確認
+- **充電されない**: 電池の極性、充電端子の半田付けを確認してください
+- **電圧が出ない**: ショートの有無、スイッチの位置を確認してください
 
 #### 通信関連
-- **I2C通信エラー**: プルアップ抵抗の追加、配線の確認
-- **WiFi接続不良**: ファームウェアの再書き込み
+- **I2C通信エラー**: プルアップ抵抗の追加や配線を確認してください
 
-#### 組み立て関連
-- **部品が浮く**: ピンの長さ、半田の盛りすぎを確認
-- **接触不良**: 半田付けの品質を再確認
+
+## 接続図とPCB
+
+  - ソルダージャンパーは通常3.3Vに繋がっていますが、カットして5V側に半田付けする事でGroveの電源を5Vで駆動出来ます。
+  - 中央を四角にカットしているので、XIAOの裏面の充電端子と半田付けしやすくなっています。
+  - KiCADファイルを公開しているので、XIAO Coinを沢山つかったり、カスタマイズする際にご利用下さい。PR頂けると嬉しいです。
+    -  KiCAD: https://github.com/uecken/xiao-coin/tree/main/XIAO_ButtonBatteryPCB_Public 
+  - GerverデータをJLCPCBにアップロードして発注すれば5枚3$で約一週間で到着します。
+    - Gerver: https://github.com/uecken/xiao-coin/blob/main/XIAO_ButtonBatteryPCB_Pulic/production/XIAO_ButtonBatteryPCB_v0.4.zip
+
+
+![PCB設計](img_micropython/XIAO_PCB.png)
+
+![回路図](img_micropython/XIAO_接続図.png)
+
 
 ---
 
 ## 参考資料
 
 ### 公式リソース
-- **BOM詳細**: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1hsU4CdXzT7cGG6bdwNirwb3Pn3HpmJ6PeojrWailB_KM/edit?usp=sharing)
+- **参考BOM**: [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1hsU4CdXzT7cGG6bdwNirwb3Pn3HpmJ6PeojrWailB_KM/edit?usp=sharing)
 - **GitHub**: PCB設計ファイル（準備中）
 - **Switch Science**: [製品ページ](https://www.switch-science.com/products/10032)
 
@@ -320,13 +420,6 @@ while True:
 - **Thonny IDE**: [https://thonny.org/](https://thonny.org/)
 - **MicroPython**: [https://micropython.org/](https://micropython.org/)
 
-### 部品調達先
-- **秋月電子**: 国内電子部品
-- **LCSC**: 海外電子部品
-- **AliExpress**: センサーモジュール
-- **Seeed Studio**: XIAOマイコン
-
----
 
 ## 連絡先・サポート
 
@@ -340,4 +433,4 @@ while True:
 
 ---
 
-**© 2025 やわらかじお - XIAO-Coin電子工作ガイドブック** 
+**© 2025 やわらからじお - XIAO-Coin電子工作ガイドブック** 
