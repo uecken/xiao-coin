@@ -2,7 +2,11 @@
 pdf-engine: xelatex
 CJKmainfont: "Noto Serif CJK JP"
 papersize: b5paper
-geometry: margin=2cm
+geometry: 
+  - paper=b5paper
+  - margin=2cm
+  - paperwidth=176mm
+  - paperheight=250mm
 top-level-division: chapter #見出し毎に改ページ
 numbersections: false
 figureTitle: ""
@@ -209,7 +213,7 @@ EEMB LIR2032H 充電式バッテリー - 電圧: 3.7V - 容量: 70mAh - 価格:
 ## 電圧確認
   - USBから電源供給し、充電端子間(BAT+とBAT-)で4.1～4.2V程度の電圧があることを確認する。
 
-![充電端子_電圧確認](img/充電端子_電圧確認.png){width=300px}
+![充電端子_電圧確認](img/充電端子_電圧確認.png){width=250px}
 
 ::: {=latex}
 \newpage
@@ -228,7 +232,7 @@ EEMB LIR2032H 充電式バッテリー - 電圧: 3.7V - 容量: 70mAh - 価格:
 - バッテリーホルダーを半田付けする。
 **バッテリー端子の＋/－をしっかり確認し、＋/－端子を間違えないに半田付けする**。
 
-![バッテリーホルダーの半田付け](img/バッテリーホルダーの半田付け.png){width=300px}
+![バッテリーホルダーの半田付け](img/バッテリーホルダーの半田付け.png){width=250px}
 
 ::: {=latex}
 \newpage
@@ -303,13 +307,13 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
     Thonny右下の接続先を適切なCOMポートに変更します
 -   「MicroPython(ESP32)」と表示されれば接続成功です
 
-![COMポート選択](img_micropython/Thonny_Select_COMPort.png){width=350px}
+![COMポート選択](img_micropython/Thonny_Select_COMPort.png){width=300px}
 
 #### 4. ファイルのアップロード
 
 -   「View」→「Files」でファイルツリーを表示
 
-![ファイルビュー](img_micropython/Thonny_View_Files.png){width=350px}
+![ファイルビュー](img_micropython/Thonny_View_Files.png){width=300px}
 
 -   micropythonプロジェクトファイルをESP32にアップロード
     -   Githubのリポジトリからmicropythonフォルダをダウンロードし、Cドライブ直下に格納してからアップロードしてください
@@ -326,7 +330,7 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 
 -   再生ボタンを押し、Helloと表示されれば動作しています。
 
-![Hello.pyの実行](img_micropython/Thonny_hello.png){width=300px}
+![Hello.pyの実行](img_micropython/Thonny_hello.png){width=250px}
 
 ::: {=latex}
 \newpage
@@ -357,7 +361,8 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 
 ![XIAO-BNO085_配線](img_micropython/XIAO-BNO085_配線.png){width=250px}
 
-![Groveピン配_Aliexモジュールピン配](img_micropython/Groveピン配_Aliexモジュールピン配.png){width=300px}
+![Groveピン配置とAliexモジュールピン配置](img_micropython/Groveピン配_Aliexモジュールピン配.png){width=300px}
+
 
 ::: {=latex}
 \newpage
@@ -369,93 +374,7 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 - https://github.com/uecken/xiao-coin/blob/main/micropython/test\_bno08x\_simple.py
 
 
-``` {.python}
-# BNO08x Micropython I2C Test program - Simplified version
-# Basic sensor data display only
-
-from machine import I2C, Pin
-from utime import sleep_ms
-from bno08x import *
-
-# I2Cピン設定（ESP32モデル別）
-I2C1_SDA = Pin(5)  # XIAO-ESP32 S3:5, C6:22, C3:6
-I2C1_SCL = Pin(6)  # XIAO-ESP32 S3:6, C6:23, C3:7
-
-# I2C初期化
-i2c1 = I2C(0, scl=I2C1_SCL, sda=I2C1_SDA, freq=400000, timeout=200000)
-
-# BNO085センサー初期化
-bno = BNO08X(i2c1, debug=False)
-print("BNO08x I2C connection : Done\n")
-
-# センサー機能を有効化
-bno.enable_feature(BNO_REPORT_ACCELEROMETER, 50)        # 加速度センサー 50ms間隔
-bno.enable_feature(BNO_REPORT_GYROSCOPE, 50)            # ジャイロスコープ 50ms間隔
-bno.enable_feature(BNO_REPORT_GAME_ROTATION_VECTOR, 50) # ゲーム回転ベクトル 50ms間隔
-bno.enable_feature(BNO_REPORT_GRAVITY, 50)              # 重力ベクトル 50ms間隔
-
-# オイラー角とクォータニオンの設定
-bno.set_quaternion_euler_vector(BNO_REPORT_GAME_ROTATION_VECTOR)
-
-print("BNO08x sensors enabling : Done\n")
-print("Starting sensor data display in 3 seconds...")
-sleep_ms(3000)
-
-# 初期キャリブレーション
-bno.calibration()
-print("Initial sensor calibration complete")
-sleep_ms(1000)
-
-# 姿勢の零点調整
-bno.tare()
-print("Tare operation complete - current orientation set as reference")
-sleep_ms(1000)
-
-print("\n===== Starting sensor data display =====\n")
-
-# メインループ
-count = 0
-while True:
-    count += 1
-    
-    print(f"===== Sensor Data Update #{count} =====")
-    
-    # 加速度データ（重力込み）
-    accel_x, accel_y, accel_z = bno.acc
-    print(f"Acceleration\tX: {accel_x:+.3f}\tY: {accel_y:+.3f}\tZ: {accel_z:+.3f}\tm/s²")
-    
-    # 重力ベクトル
-    grav_x, grav_y, grav_z = bno.gravity
-    print(f"Gravity\t\tX: {grav_x:+.3f}\tY: {grav_y:+.3f}\tZ: {grav_z:+.3f}\tm/s²")
-    
-    # 線形加速度（重力補正済み）
-    linear_x = accel_x - grav_x
-    linear_y = accel_y - grav_y
-    linear_z = accel_z - grav_z
-    print(f"Linear Accel\tX: {linear_x:+.3f}\tY: {linear_y:+.3f}\tZ: {linear_z:+.3f}\tm/s²")
-    
-    # ジャイロスコープ（角速度）
-    gyro_x, gyro_y, gyro_z = bno.gyro
-    print(f"Gyroscope\tX: {gyro_x:+.3f}\tY: {gyro_y:+.3f}\tZ: {gyro_z:+.3f}\trad/s")
-    
-    # オイラー角（Roll, Pitch, Yaw）
-    roll, pitch, yaw = bno.euler
-    print(f"Euler Angle\tRoll: {roll:+.3f}\tPitch: {pitch:+.3f}\tYaw: {yaw:+.3f}\trad")
-    
-    # クォータニオン
-    quat_w, quat_x, quat_y, quat_z = bno.quaternion
-    print(f"Quaternion\tW: {quat_w:+.3f}\tX: {quat_x:+.3f}\tY: {quat_y:+.3f}\tZ: {quat_z:+.3f}")
-    
-    print()  # 空行
-    
-    # 1秒間隔で表示
-    sleep_ms(1000) 
-```
-
 ![Thonny_BNO085_プログラム実行結果](img_micropython/Thonny_BNO085_プログラム実行2.png){width=500px}
-
-### 出力データの解説
-
 
     ===== Sensor Data Update #42 =====
     Acceleration    X: -3.016   Y: -8.043   Z: -4.281   m/s²
@@ -478,24 +397,6 @@ Accel（線形加速度）が取れるので正しく使えばある程度の相
     -   Z: +0.000 m/s² → 完全にゼロ（静止状態）
 -   **用途**: 物体の実際の動きの検出、歩数計、振動検知
 
-#### 実用的な活用例
-
-**1. 水平器**
-
-``` {.python}
-# Euler AngleのX, Y成分で水平からの傾きを検出
-tilt_x = roll * 180 / 3.14159  # ラジアンを度に変換
-tilt_y = pitch * 180 / 3.14159
-```
-
-**2. 動作検出**
-
-``` {.python}
-# Linear Accelの大きさで動きを検出
-motion_magnitude = (linear_x**2 + linear_y**2 + linear_z**2)**0.5
-if motion_magnitude > 0.5:  # 閾値
-    print("Motion detected!")
-```
 
 ::: {=latex}
 \newpage
@@ -522,8 +423,6 @@ if motion_magnitude > 0.5:  # 閾値
 ::: {=latex}
 \newpage
 :::
-
-
 
 ### トラブルシューティング
 
@@ -564,7 +463,7 @@ if motion_magnitude > 0.5:  # 閾値
 \centering
 :::
 
-![ ](img/XIAO-Coin軍団.png){width=600px}
+![ ](img/XIAO-Coin軍団.png){width=450px}
 
 ::: {=latex}
 \vspace*{\fill}
