@@ -24,25 +24,40 @@
 
 ## Thonnyの設定
 
-
-
 ### MicroPythonファームウェアの書き込み
 
-1. Thonnyメニューから「Tools」→「Options」
-2. 上部オレンジ枠にて、MicroPython(ESP32)を選択
-3. 右下オレンジ枠の「Install or update MicroPython(esptool)」を選択
+1. Thonnyメニューから「Tools」→「Options」を選択
+2. 「Interpreter」タブを開く
+3. 上部のドロップダウンメニューで「MicroPython (ESP32)」を選択
+4. 右下の「Install or update MicroPython (esptool)」ボタンをクリック
 
 ![Thonny_Options](img_micropython/Thonny_Options.png)
 
-3. XIAO EPS32のBootボタンを押しながらUSBケーブルを接続する。<br>
-オレンジ枠にて、USB JTAG...と表示されているCOMポートを選択する。
+5. **重要**: XIAO ESP32のBootボタンを押しながらUSBケーブルを接続する
+   - これによりESP32がダウンロードモードに入ります
+6. ポート選択画面で「USB JTAG...」と表示されているCOMポートを選択
 
-4. ESP32用ファームウェアを選択し、Installボタンを押す。<br>
-今回はXIAO ESP32S3を利用している。ESP32系に応じて選択する事。
+7. ファームウェア選択画面で以下を設定：
+   - **Target port**: 検出されたCOMポートが表示されていることを確認
+   - **MicroPython family**: 使用するESP32に応じて選択
+     - XIAO ESP32S3の場合: 「ESP32-S3」を選択
+     - XIAO ESP32C3の場合: 「ESP32-C3」を選択
+     - XIAO ESP32C6の場合: 「ESP32-C6」を選択
+   - **Variant**: 通常は「Espressif ESP32-S3」など標準版を選択
+   - **Version**: 最新の安定版を選択（通常は最上位に表示）
+
+8. 「Install」ボタンをクリックしてファームウェアの書き込みを開始
+   - 書き込み中は進行状況が表示されます
+   - 完了まで数分かかる場合があります
 
 ![ファームウェア書き込み](img_micropython/Thonny_Install_micropython.png)
 
+9. 書き込み完了後、「Close」ボタンでダイアログを閉じる
 
+**注意事項**:
+- 書き込み中はUSBケーブルを抜かないでください
+- エラーが発生した場合は、ESP32を再度ダウンロードモードにして再試行してください
+- 初回書き込み時は既存のプログラムが消去されます
 
 ### ESP32への接続
 

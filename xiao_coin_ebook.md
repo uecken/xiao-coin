@@ -4,13 +4,55 @@ CJKmainfont: "Noto Serif CJK JP"
 papersize: b5paper
 geometry: margin=2cm
 top-level-division: chapter #見出し毎に改ページ
+numbersections: false
+figureTitle: ""
+tableTitle: ""
+listingTitle: ""
+figPrefix: ""
+eqnPrefix: ""
+tblPrefix: ""
+lstPrefix: ""
+header-includes:
+  - \usepackage{caption}
+  - \captionsetup{labelformat=empty}
+  - \captionsetup[figure]{labelformat=empty}
 ---
 
 
-XIAO-Coin 電子工作ガイドブック
-==============================
 
-*小型無線マイコンとセンサーで始めるIoT開発*
+<div style="text-align: center; page-break-after: always;">
+
+<br><br>
+
+::: {=latex}
+\centering
+\Huge \textbf{XIAO-Coinで始めるIoT}
+\vspace{4cm}
+:::
+
+<br><br>
+
+![　](img/XIAO-Coin表紙.png){width=500px}
+
+<br><br>
+
+::: {=latex}
+\centering
+\Large \textbf{やわらからじお}
+
+\normalsize
+\raggedright
+:::
+
+</div>
+
+
+
+
+::: {=latex}
+\newpage
+:::
+
 
 ------------------------------------------------------------------------
 
@@ -18,8 +60,8 @@ XIAO-Coin 電子工作ガイドブック
 ----
 
 1.  [はじめに](#はじめに)
-2.  [XIAO-Coin基板について](#xiao-coin基板について)
-3.  [部品調達とコスト](#部品調達とコスト)
+2.  [XIAO-Coinについて](#xiao-coinについて)
+3.  [部品とコスト](#部品とコスト)
 4.  [組み立て手順](#組み立て手順)
 5.  [開発環境の構築](#開発環境の構築)
 6.  [センサー接続とプログラミング](#センサー接続とプログラミング)
@@ -28,81 +70,69 @@ XIAO-Coin 電子工作ガイドブック
 9.  [接続図とPCB](#接続図とPCB)
 10. [参考資料](#参考資料)
 
-::: {=latex}
-\newpage
-:::
 
-------------------------------------------------------------------------
 
 はじめに
 --------
 
-本書は、XIAO-Coin基板を使用した小型IoTデバイスの製作から、MicroPythonによるプログラミングまでを包括的に解説するガイドブックです。
+本書は、XIAO-Coinを使用した小型充電式無線マイコン、並びにMicroPythonによる簡易なプログラミング解説するガイドブックです。
 
 ### 対象読者
 
--   電子工作初心者〜中級者
--   IoT開発に興味がある方
+-   電子工作初心者ー中級者
 -   小型デバイスでのプロトタイピングを行いたい方
 
 ### 本書で学べること
 
--   XIAO-Coin基板の組み立て
+-   XIAO-Coinの組み立て
 -   MicroPythonによるプログラミング -各種センサーの活用方法
--   実践的なIoTプロジェクトの開発
+
+#### 注意点
+
+  - **CR2032電池は使用できません** 
+  - **一般的なリチウム電池は使用できません** 
+  - **LIR2032/2450専用です**（リチウムイオンコイン電池のみ） 
+  - **半田付けに慣れている必要があります**
+
 
 ::: {=latex}
 \newpage
 :::
 
-------------------------------------------------------------------------
 
-XIAO-Coin基板について
+
+XIAO-Coinについて
 ---------------------
 
 ### 概要
 
-XIAO-Coin基板は、Seeed
-Studio製XIAOマイコンとリチウムイオンコイン電池を組み合わせた、超小型の無線マイコンボードです。
+XIAO-Coinは、リチウムイオン充電機能のあるSeeed Studio製XIAOとリチウムイオンコイン電池を組み合わせた、小型（38mm x 28mm）の無線マイコンボードです。
 
-**ウェブサイト**: <https://www.switch-science.com/products/10032>
+オンラインで基板セットを販売しています。GitHubでKiCADファイルを公開していますので、気に入った方は沢山創ったり、カスタマイズして是非ご利用ください。
+
+**スイッチサイエンス販売サイト**: <https://www.switch-science.com/products/10032>
+
+![XIAO-Coin_セット品](img/XIAO-Coin_セット品.png){width=300px}
 
 ### 特徴
 
 -   XIAOの小ささとLipo充電端子を生かしたコインホルダー一体型無線マイコン
 -   Grove端子でI2Cセンサ接続可能
--   電池容量: 45mAh〜120mAh（2032〜2450サイズ対応）
--   各種XIAOシリーズに対応（C3, S3, C6...）
--   充電機能内蔵
-
-### 注意点
-
-  - **電池に関する重要な注意** 
-  - **CR2032電池は使用不可** 
-  - **一般的なリチウム電池は使用不可** 
-  - **LIR2032/2450専用**（リチウムイオンコイン電池のみ） 
-**半田付けに慣れている必要があります**
-
-### 最新の更新内容（2025/5/23）
-
-1.  XIAOと基板の充電端子を半田付けしやすくするため中央部分をカット（Castellated
-    Hole化）
-2.  Grove端子の電源をSolder Jumperで3.3V/5V選択可能に
-3.  Grove端子を表面にも追加可能に
+-   充電機能内蔵のため各種コイン電池に対応：45mAh〜120mAh（2032〜2450サイズ）
 
 ::: {=latex}
 \newpage
 :::
 
-------------------------------------------------------------------------
 
-部品調達とコスト
+
+必要部品とコスト
 ----------------
 
 ### 必要部品一覧（BOM）
 
--   XIAOの単価はC3が最も安く、630円/個で試作できるため各種センサの動作評価に向いています。私は毎回ソフトやセンサを付け替えて後で動作させるのに時間がかからないように、動作したセンサとセットで組み合わせて保管するようにしています。
--   Groveコネクタが必要だったり、充電池と電源スイッチが必要な場合、このXIAOコイン基板は向いています。
+- XIAOの単価はC3が最も安く、630円/個で試作できるため各種センサの動作評価に向いています。
+- これだけ安ければ動作したセンサとセットでそのままにしておけるので、毎回ソフトやセンサを付け替える必要が無いのが便利です。
 
 | 名称 | 価格 | 販売先 | 備考 |
 |------|------|--------|------|
@@ -124,9 +154,9 @@ Studio製XIAOマイコンとリチウムイオンコイン電池を組み合わ�
 
 ### 推奨電池
 
-**EEMB LIR2032H 充電式バッテリー** - 電圧: 3.7V - 容量: 70mAh - 価格:
-¥1,309
 
+EEMB LIR2032H 充電式バッテリー - 電圧: 3.7V - 容量: 70mAh - 価格:
+¥1,309
 
 ![LIR2032H電池](img/LIR2032Hコイン電池70mAh.png){width=300px}
 
@@ -134,7 +164,7 @@ Studio製XIAOマイコンとリチウムイオンコイン電池を組み合わ�
 \newpage
 :::
 
-------------------------------------------------------------------------
+
 
 組み立て手順
 ------------
@@ -150,10 +180,6 @@ Studio製XIAOマイコンとリチウムイオンコイン電池を組み合わ�
 
 注: 先にバッテリーホルダーを付けると、XIAOの充電端子を半田付けできないので注意。
 次ページで写真付きで説明します。
-
-::: {=latex}
-\newpage
-:::
 
 ## XIAOと基板の半田付け
   - XIAOの片側の端子をピン固定し、反対側の端子を半田付けする。
@@ -222,26 +248,26 @@ Studio製XIAOマイコンとリチウムイオンコイン電池を組み合わ�
 
 ## 完成品
 
+<div style="text-align: center;">
 
-- 完成！
+完成！
+
 USB接続し、 __スライドスイッチを中央側__ にすると充電され、充電中はCHG LEDが点滅します
+
 好きなセンサを接続しましょう！
 
 ![完成品](img/完成品.png){width=300px}
+
+</div>
 
 ::: {=latex}
 \newpage
 :::
 
-------------------------------------------------------------------------
+
 
 開発環境の構築
 --------------
-
-### 必要なソフトウェア
-
--   **Thonny IDE**: MicroPython開発環境
--   **MicroPythonファームウェア**: ESP32用
 
 ### Thonnyのインストールと設定
 
@@ -250,10 +276,6 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 1.  [Thonny公式サイト](https://thonny.org/)からダウンロード
 2.  インストーラーを実行してセットアップ
 
-::: {=latex}
-\newpage
-:::
-
 #### 2. MicroPythonファームウェアの書き込み
 
 下記6ステップを順に行ってください。
@@ -261,12 +283,12 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 -   Thonnyメニュー「Tools」→「Options」
 -   「MicroPython(ESP32)」を選択
 -   「Install or update MicroPython(esptool)」を選択
--   XIAO ESP32のBootボタンを押しながらUSB接続
-    (ブートモードにする必要があります。)
 
 ![Thonny設定画面](img_micropython/Thonny_Options.png){width=300px}
 
--   適切なCOMポートを選択
+-   XIAO ESP32のBootボタンを押しながらUSB接続
+    (ブートモードにする必要があります。)
+-   適切なCOMポートを選択(USB/JTAGとついているものを選びます)
 -   ESP32用ファームウェアを選択してInstall
 
 ![ファームウェア書き込み](img_micropython/Thonny_Install_micropython.png){width=300px}
@@ -281,13 +303,13 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
     Thonny右下の接続先を適切なCOMポートに変更します
 -   「MicroPython(ESP32)」と表示されれば接続成功です
 
-![COMポート選択](img_micropython/Thonny_Select_COMPort.png){width=300px}
+![COMポート選択](img_micropython/Thonny_Select_COMPort.png){width=350px}
 
 #### 4. ファイルのアップロード
 
 -   「View」→「Files」でファイルツリーを表示
 
-![ファイルビュー](img_micropython/Thonny_View_Files.png){width=300px}
+![ファイルビュー](img_micropython/Thonny_View_Files.png){width=350px}
 
 -   micropythonプロジェクトファイルをESP32にアップロード
     -   Githubのリポジトリからmicropythonフォルダをダウンロードし、Cドライブ直下に格納してからアップロードしてください
@@ -310,7 +332,6 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 \newpage
 :::
 
-------------------------------------------------------------------------
 
 センサー接続とプログラミング
 ----------------------------
@@ -321,23 +342,20 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 
 -   BNO085は AliExpressから購入すると安いです。
 
--   但しGroveコネクタを使う場合、3.3V⇔GND、SDA⇔SDLピンをそれぞれ入れ替える必要があるので注意してください。
+-   但しGroveコネクタを使う場合、3.3V--GND、SDA--SDLピンをそれぞれ入れ替える必要があるので注意してください。
 
 -   URL: https://ja.aliexpress.com/item/1005005902501032.html
 
 ![BNO085](img_micropython/BNO085.png){width=300px}
 
-::: {=latex}
-\newpage
-:::
 
 #### 配線方法
 
-- 参考までに、Aliexpressのモジュールのピン配置、正規のGroveコネクタのピン配置を参考として示します。正規のGroveコネクタのピン配置に合わせるために、3.3V⇔GND、SDA⇔SDLピンをそれぞれ入れ替える必要があります
+- 参考までに、Aliexpressのモジュールのピン配置、正規のGroveコネクタのピン配置を参考として示します。正規のGroveコネクタのピン配置に合わせるために、3.3V--GND、SDA--SDLピンをそれぞれ入れ替える必要があります
 
 - 一般的にI2CはSDAとSCLにプルアップ抵抗が必要です。通信が安定しない場合、3.3VとSDA、3.3VとSCLを繋ぐように4.7kΩの抵抗を接続して下さい。
 
-![XIAO-BNO085_配線](img_micropython/XIAO-BNO085_配線.png){width=300px}
+![XIAO-BNO085_配線](img_micropython/XIAO-BNO085_配線.png){width=250px}
 
 ![Groveピン配_Aliexモジュールピン配](img_micropython/Groveピン配_Aliexモジュールピン配.png){width=300px}
 
@@ -434,9 +452,10 @@ while True:
     sleep_ms(1000) 
 ```
 
-![Thonny_BNO085_プログラム実行2](img_micropython/Thonny_BNO085_プログラム実行2.png){width=300px}
+![Thonny_BNO085_プログラム実行結果](img_micropython/Thonny_BNO085_プログラム実行2.png){width=500px}
 
 ### 出力データの解説
+
 
     ===== Sensor Data Update #42 =====
     Acceleration    X: -3.016   Y: -8.043   Z: -4.281   m/s²
@@ -445,6 +464,8 @@ while True:
     Gyroscope   X: +0.008   Y: -0.008   Z: +0.008   rad/s
     Euler Angle Roll: -118.298  Pitch: +18.422  Yaw: -33.818    rad
     Quaternion  W: -0.787   X: +0.325   Y: -0.016   Z: +0.524
+
+<br>
 
 参考までに、重力加速度を除いたLinear
 Accel（線形加速度）が取れるので正しく使えばある程度の相対位置測位に利用できます。
@@ -480,27 +501,7 @@ if motion_magnitude > 0.5:  # 閾値
 \newpage
 :::
 
-------------------------------------------------------------------------
 
-トラブルシューティング
-----------------------
-
-### よくある問題と解決方法
-
-#### 電源関連
-
--   **充電されない**: 電池の極性、充電端子の半田付けを確認してください
--   **電圧が出ない**: ショートの有無、スイッチの位置を確認してください
-
-#### 通信関連
-
--   **I2C通信エラー**: プルアップ抵抗の追加や配線を確認してください
-
-::: {=latex}
-\newpage
-:::
-
-------------------------------------------------------------------------
 
 接続図とPCB
 -----------
@@ -511,41 +512,70 @@ if motion_magnitude > 0.5:  # 閾値
     Coinを沢山つかったり、カスタマイズする際にご利用下さい。PR頂けると嬉しいです。
     -   KiCAD:
         https://github.com/uecken/xiao-coin/tree/main/XIAO\_ButtonBatteryPCB\_Public
--   GerverデータをJLCPCBにアップロードして発注すれば5枚3\$で約一週間で到着します。
-    - Gerver:
-    - https://github.com/uecken/xiao-coin/blob/main/XIAO\_ButtonBatteryPCB\_Pulic/production/XIAO\_ButtonBatteryPCB\_v0.4.zip
+-   GerverデータをJLCPCBにアップロードして発注すれば5枚3$で約一週間で到着します。
+    - [Gerber URL](https://github.com/uecken/xiao-coin/blob/main/XIAO_ButtonBatteryPCB_Pulic/production/XIAO_ButtonBatteryPCB_v0.4.zip)
 
-![XIAO_PCB](img_micropython/XIAO_PCB.png){width=300px}
+![XIAO_PCB](img_micropython/XIAO_PCB.png){width=400px}
 
-![XIAO_接続図](img_micropython/XIAO_接続図.png){width=300px}
+![XIAO_接続図](img_micropython/XIAO_接続図.png){width=400px}
 
 ::: {=latex}
 \newpage
 :::
 
-------------------------------------------------------------------------
 
-参考資料
---------
+
+### トラブルシューティング
+
+-   **充電されない**: 電池の極性、充電端子の半田付けを確認してください
+-   **電圧が出ない**: ショートの有無、スイッチの位置を確認してください
+-   **I2C通信エラー**: プルアップ抵抗の追加や配線を確認してください
+
+
 
 ### 参考資料
 
--   **参考BOM**: https://docs.google.com/spreadsheets/d/1hsU4CdXzT7cGG6bdwNirwb3Pn3HpmJ6PeojrWailB_KM/edit?usp=sharing
 -   **GitHub**: https://github.com/uecken/xiao-coin/tree/main
--   **Switch Science**: https://www.switch-science.com/products/10032
+
+
+### 最新の更新内容（2025/5/23）
+
+1.  XIAOと基板の充電端子を半田付けしやすくするため中央部分をカット（Castellated
+    Hole化）
+2.  Grove端子の電源をSolder Jumperで3.3V/5V選択可能に
+3.  Grove端子を表面にも追加可能に
 
 連絡先・サポート
 ----------------
 
 **やわらからじお** 
 - Email: <yawaraka.radio@gmail.com> 
-- カスタムセンサ基板制作のご依頼も承ります
 
 
-------------------------------------------------------------------------
 
-*本書は電子工作の安全性に十分注意して作成していますが、作業は自己責任で行ってください。特に半田付け作業では火傷や有害ガスに注意し、適切な換気と保護具の使用を心がけてください。*
 
-------------------------------------------------------------------------
+::: {=latex}
+\newpage
+:::
 
-**© 2025 やわらからじお - XIAO-Coin電子工作ガイドブック**
+
+::: {=latex}
+\vspace*{\fill}
+\centering
+:::
+
+![ ](img/XIAO-Coin軍団.png){width=600px}
+
+::: {=latex}
+\vspace*{\fill}
+\centering
+:::
+
+**© 2025 やわらからじお - XIAO-Coinで始めるIoT**
+
+::: {=latex}
+\normalsize
+\raggedright
+:::
+
+</div>

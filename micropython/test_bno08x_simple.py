@@ -78,3 +78,16 @@ while True:
     
     # 1秒間隔で表示
     sleep_ms(1000) 
+
+
+
+'''    
+===== Sensor Data Update #42 =====
+Acceleration	X: -3.016	Y: -8.043	Z: -4.281	m/s²
+Gravity		X: -3.023	Y: -8.047	Z: -4.281	m/s²
+Linear Accel	X: +0.008	Y: +0.004	Z: +0.000	m/s²
+Gyroscope	X: +0.008	Y: -0.008	Z: +0.008	rad/s
+Euler Angle	Roll: -118.298	Pitch: +18.422	Yaw: -33.818	rad
+Quaternion	W: -0.787	X: +0.325	Y: -0.016	Z: +0.524
+
+'''
