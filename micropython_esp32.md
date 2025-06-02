@@ -106,7 +106,7 @@ https://ja.aliexpress.com/item/1005005902501032.html?spm=a2g0o.productlist.main.
 
 
 
- - 参考までに、Aliexpressのモジュールのピン配置、正規のGroveコネクタのピン配置を参考として示します。正規のGroveコネクタのピン配置に合わせるために、3.3V⇔GND、SDA⇔SDLピンをそれぞれ入れ替える必要があります。
+
 ![Groveピン配_Aliexモジュールピン配.png](img_micropython/Groveピン配_Aliexモジュールピン配.png)
 
 

@@ -145,6 +145,12 @@ XIAO-Coinは、リチウムイオン充電機能のあるSeeed Studio製XIAOと�
 | スライドスイッチ MK-12D13G4-B | 10円 | LCSC | 
 | Groveコネクター L型 スルーホール | 15円 | 秋月電子 | 
 
+電源スイッチは背丈の小さいものを採用していますが、秋月電子で代替できる部品は下記です。
+ - 小型スライドスイッチ 1回路2接点 SS12D01G4
+https://akizukidenshi.com/catalog/g/g112723/
+- スライドスイッチ 1回路2接点 基板用 横向き
+https://akizukidenshi.com/catalog/g/g115704/
+
 ### XIAO各種モデルの単価（Seeed社から10個購入時）
 
 | モデル | 単価（USD） | 単価（円）* | 特徴 |
@@ -448,8 +454,8 @@ Accel（線形加速度）が取れるので正しく使えばある程度の相
 ----------------
 
 **やわらからじお** 
-- Email: <yawaraka.radio@gmail.com> 
-
+- X: @uecken
+- Email: <yawaraka.radio@gmail.com>
 
 
 

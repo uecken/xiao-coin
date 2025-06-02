@@ -1,0 +1,1 @@
+pandoc xiao_coin_ebook.md   -o xiao_coin_ebook.pdf   --pdf-engine=xelatex   -V CJKmainfont="Noto Serif CJK JP"

@@ -1,6 +1,6 @@
 # XIAO-Coin で始めるIoT開発
 
-詳細なガイドブックは以下をご覧ください：
+詳細ガイドブック：
 
 📖 **[XIAO-Coin ガイドブック](xiao_coin_ebook.md)**
 
