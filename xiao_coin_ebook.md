@@ -279,12 +279,16 @@ USB接続し、 __スライドスイッチを中央側__ にすると充電さ�
 開発環境の構築
 --------------
 
+XIAOは様々な種類がありますが、XIAO-ESP32系を利用した方法を記載します。
+
 ### Thonnyのインストールと設定
 
 #### 1. Thonnyのインストール
 
-1.  [Thonny公式サイト](https://thonny.org/)からダウンロード
-2.  インストーラーを実行してセットアップ
+1.  [Thonny公式サイト](https://thonny.org/) https://thonny.org/ からダウンロードし、インストールする。
+
+![Thonnyのダウンロード](img_micropython/Thonny_Install.png){width=300px}
+
 
 #### 2. MicroPythonファームウェアの書き込み
 
